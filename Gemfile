@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'react-rails'
+gem 'bootstrap-sass'
+gem 'react-bootstrap-rails'
+gem 'lodash-rails'
+gem 'bootstrap-sass'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
