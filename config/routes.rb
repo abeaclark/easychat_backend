@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/calendar' => 'welcome#calendar'
 
+  post '/shifts' => 'shifts#create'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
