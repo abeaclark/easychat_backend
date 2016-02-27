@@ -1,12 +1,13 @@
 <div class="simple-calendar">
-    <%= link_to "Previous", url_for(params.merge(start_date: date_range.first - 1.day)), html_options = {:class=>"btn btn-success pull-left"} %>
+    <%= link_to "<", url_for(params.merge(start_date: date_range.first - 1.day)), html_options = {:class=>"btn pull-left arrow"} %>
    <span class="week-label">Week of <%= start_date.strftime("%B") %> <%= start_date.strftime("%d") %></span>
-   <%= link_to "Next", url_for(params.merge(start_date: date_range.last + 1.day)), html_options = {:class=>"btn btn-success pull-right"} %>
+   <%= link_to ">", url_for(params.merge(start_date: date_range.last + 1.day)), html_options = {:class=>"btn pull-right arrow"} %>
   <table class="table table-striped">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= I18n.t("date.abbr_day_names")[day.wday] %></th>
+          <th><span class="badge margin-right"><%= day.day %></span>  <%= I18n.t("date.abbr_day_names")[day.wday] %> </th>
+
         <% end %>
       </tr>
     </thead>

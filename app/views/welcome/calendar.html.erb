@@ -1,5 +1,4 @@
 <%= week_calendar do |date| %>
-    <%= date %>
 
     <% i = 1 %>
     <% 24.times do %>
@@ -8,11 +7,11 @@
 
       <% shift_scheduled = @shifts.find {|shift| shift.start_time >= beginning && shift.start_time < ending } %>
       <% if shift_scheduled %>
-        <div class="calendar_times">
+        <div class="calendar_times other-person">
           <%= shift_scheduled.user.first_name %>
         </div>
       <% else %>
-        <div class="calendar_times btn btn-success">
+        <div class="calendar_times btn btn-default">
           <span class="glyphicon glyphicon-plus"></span>
           <%= beginning.strftime("%I")%>
           <%= beginning.strftime("%p")%>
