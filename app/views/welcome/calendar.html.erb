@@ -7,9 +7,15 @@
 
       <% shift_scheduled = @shifts.find {|shift| shift.start_time >= beginning && shift.start_time < ending } %>
       <% if shift_scheduled %>
-        <div class="calendar_times other-person">
-          <%= shift_scheduled.user.first_name %>
-        </div>
+        <% if shift_scheduled.user.id === current_user.id %>
+          <div class="calendar_times me">
+            <%= shift_scheduled.user.first_name %>
+          </div>
+        <% else %>
+          <div class="calendar_times other-person">
+            <%= shift_scheduled.user.first_name %>
+          </div>
+        <% end %>
       <% else %>
         <div class="calendar_times btn btn-default">
           <span class="glyphicon glyphicon-plus"></span>
