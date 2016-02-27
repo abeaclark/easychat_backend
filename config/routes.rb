@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/calendar' => 'welcome#calendar'
 
+  get '/widget' => 'welcome#widget'
+
   post '/shifts' => 'shifts#create'
 
   # Example of regular route:
