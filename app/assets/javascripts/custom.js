@@ -3,18 +3,16 @@ $(document).ready(function() {
 
 
   $('.addShiftButton').click(function(){
-    var currentButton = this;
+    $(this).replaceWith('<div class="calendar_times me">Me</div>');
 
     var dateTime = $(this).attr('beginning')
-    console.log(dateTime)
 
   $.post( "/shifts", { shift: {start_time: dateTime, user_id: 1}})
     .done(function( data ) {
-      alert( "Data Loaded: " + data );
+    console.log('success')
   });
 
   });
 
 });
 
-// this.replaceWith();
