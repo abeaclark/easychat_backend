@@ -62,15 +62,87 @@
 
         jQuery(document).ready(function ($) {
           //or you could wait until the page is ready
-          jQuery('body').append(htmlToLoad)
+        jQuery('body').append(htmlToLoad)
 
-          loadCss("http://localhost:3000/stylesheets/widget.css");
+        jQuery('#chat-thumbnail').click(function(){
+            jQuery(this).toggle();
+            jQuery('#chat-container').toggle();
+        });
+
+        jQuery('#close-chat').click(function(){
+            jQuery('#chat-container').toggle();
+            jQuery('#chat-thumbnail').toggle();
+        });
+
+        loadCss("http://localhost:3000/stylesheets/widget.css");
+
+        loadScript("http://localhost:3000/javascripts/sinch-sdk.js", function(){
+            sinchClient = new SinchClient({
+                applicationKey: '1686d805-cf47-4091-ba5f-9c4d7afffab1',
+                capabilities: {messaging: true}
+            });
+
+            // Register NEW user
+
+            var loginObject = {username: 'easychatonline', password: 'easychatonline'};
+            sinchClient.newUser(loginObject, function(ticket) {
+
+                sinchClient.start({username: 'easychatonline', password: 'easychatonline'}, function() {
+                global_username = easychatonline;
+                console.log("Logged in!");
+                }).fail(handleError);
+
+            }).fail(handleError);
+
+            var handleError = function(error) {}
+
+
+
+        });
+
+
 
         });
 
         var htmlToLoad = `
             <img class='chat-head' src='https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/096/07c/1427c21.jpg'>
-            <div class="speech-bubble"></div>
+            <div id="bubble" class="speech-bubble flex">
+                <div id="chat-thumbnail">
+                    <img class="message-icon"src="http://localhost:3000/message.png">
+                </div>
+
+                  <div id="chat-container" style="display: none">
+                      <div class="menu">
+                        <div class="name">Chat with Abe</div>
+                        <img id="close-chat" src="http://localhost:3000/close-window.png">
+                      </div>
+                        <ol class="chat">
+                        <li class="other">
+                          <div class="msg">
+                            <p>Hola!</p>
+                            <p>Te vienes a cenar al centro? <emoji class="pizza"/></p>
+                            <time>20:17</time>
+                          </div>
+                        </li>
+                        <li class="self">
+                          <div class="msg">
+                            <p>Puff...</p>
+                            <p>Aún estoy haciendo el contexto de Góngora... <emoji class="books"/></p>
+                            <p>Mejor otro día</p>
+                            <time>20:18</time>
+                          </div>
+                        </li>
+                        <li class="other">
+                          <div class="msg">
+                            <p>Qué contexto de Góngora? <emoji class="suffocated"/></p>
+                            <time>20:18</time>
+                          </div>
+                        </li>
+
+                        </ol>
+                        <input class="textarea" type="text" placeholder="Type here!"/>
+                      </div>
+            </div>
             `
     }
 
