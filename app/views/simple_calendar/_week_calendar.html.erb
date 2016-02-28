@@ -6,7 +6,7 @@
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><span class="badge margin-right"><%= day.day %></span>  <%= I18n.t("date.abbr_day_names")[day.wday] %> </th>
+          <th><span class="badge margin-right day-header"><%= day.day %></span>  <span class="day-header"><%= I18n.t("date.abbr_day_names")[day.wday] %></span> </th>
 
         <% end %>
       </tr>

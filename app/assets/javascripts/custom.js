@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 
   $('.addShiftButton').click(function(){
-    $(this).replaceWith('<div class="calendar_times me">Me</div>');
+    $(this).replaceWith('<div class="calendar_times me"></div>');
 
     var dateTime = $(this).attr('beginning')
 
