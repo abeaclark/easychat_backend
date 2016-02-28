@@ -22,7 +22,7 @@
       <div id="jumbo_1" class="jumbotron">
           <div class="flex main-container">
             <div class="embedded-video">
-              <iframe width="800" height="400" src="https://www.youtube.com/embed/CHH5UtFbkis?autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
+              <iframe width="800" height="400" src="https://www.youtube.com/embed/W85Acbu-OPM?autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -57,3 +57,22 @@
       </nav>
 
     </div>
+
+<!-- smooth scroll -->
+<script>
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+
+</script>
